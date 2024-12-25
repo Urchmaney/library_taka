@@ -2,7 +2,8 @@
 A simple system to facilitate adding, borrowing Available books
 
 ## Run Test
-You can run the test with the following command
+- Clone project with `git clone https://github.com/Urchmaney/library_taka.git`
+- You can run the test with the following command
 ```ruby
- ruby tests/library.rb
+ ruby test.rb
 ```

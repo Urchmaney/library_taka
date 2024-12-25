@@ -1,4 +1,8 @@
 module LibraryTaka
+  #
+  # The Book class for storing books object.
+  # It ensures that isbn number is not null or empty
+  #
   class Book
     attr_reader :isbn
     

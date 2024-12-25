@@ -1,7 +1,12 @@
 module LibraryTaka
+  #
+  # The main Library class. It has a store for books.
+  # store is a hash with the following structure
+  # { isbn[string]: { available[boolean], book[Book] } }
+  #
   class Library
     def initialize
-      @store = {}
+      @store = Hash.new
     end
 
     def add_book(book)
