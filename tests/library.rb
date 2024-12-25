@@ -1,3 +1,4 @@
+require_relative "sample_data"
 module LibraryTaka
   class TestLibrary
     class AddBook < Test::Unit::TestCase
@@ -5,26 +6,41 @@ module LibraryTaka
         @library = Library.new
       end
 
-      def sample_book
-        isbn = "978-92-95055-02-5"
-        author = "Micheal Scoffield"
-        title = "Breaking Free"
-        publication_year = "2000"
-        Book.new isbn, title, author, publication_year
-      end
-
       def test_add_book_without_error
         count = @library.available_books.count
         assert_nothing_raised do
-          @library.add_book sample_book
+          @library.add_book SAMPLE_BOOKS[0]
         end
         assert_equal @library.available_books.count, count + 1
       end
 
       def test_error_adding_duplicate_book
         assert_raise AddingDuplicateError do
-          @library.add_book sample_book
-          @library.add_book sample_book
+          @library.add_book SAMPLE_BOOKS[0]
+          @library.add_book SAMPLE_BOOKS[0]
+        end
+      end
+    end
+
+
+    class BorrowBook < Test::Unit::TestCase
+      def setup
+        @library = Library.new
+        SAMPLE_BOOKS.each {|book| @library.add_book book }
+      end
+
+      def test_borrow_book_without_error
+        count = @library.available_books.count
+        assert_nothing_raised do
+          @library.borrow_book SAMPLE_BOOKS[0]
+        end
+        assert_equal @library.available_books.count, count - 1
+      end
+
+      def test_error_borrow_unavailable_book
+        assert_raise BookUnavailableError do
+          @library.borrow_book SAMPLE_BOOKS[1]
+          @library.borrow_book SAMPLE_BOOKS[1]
         end
       end
     end
