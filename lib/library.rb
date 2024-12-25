@@ -20,5 +20,11 @@ module LibraryTaka
 
       @store[book.isbn][:available] = false
     end
+
+    def return_book(book)
+      raise BookNotFoundError.new(book.isbn) if @store[book.isbn].nil?
+
+      @store[book.isbn][:available] = true
+    end
   end
 end

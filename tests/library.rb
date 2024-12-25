@@ -68,9 +68,9 @@ module LibraryTaka
       end
 
       def test_unaffected_multiple_return_book
+        @library.return_book @borrowed_book
         count = @library.available_books.count
         assert_nothing_raised do
-          @library.return_book @borrowed_book
           @library.return_book @borrowed_book
         end
         assert_equal @library.available_books.count, count
