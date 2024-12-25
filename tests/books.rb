@@ -1,5 +1,5 @@
 module LibraryTaka
-  class TestLibrary < Test::Unit::TestCase
+  class TestBook < Test::Unit::TestCase
     def test_book_creation
       assert_nothing_raised do
         isbn = "978-92-95055-02-5"
