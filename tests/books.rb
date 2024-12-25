@@ -1,5 +1,4 @@
-require "test/unit"
-module Library
+module LibraryTaka
   class TestLibrary < Test::Unit::TestCase
     def test_book_creation
       assert_nothing_raised do
@@ -7,17 +6,17 @@ module Library
         author = "Micheal Scoffield"
         title = "Breaking Free"
         publication_year = "2000"
-        Library::Book.new isbn, title, author, publication_year
+        Book.new isbn, title, author, publication_year
       end
     end
 
     def test_error_for_empty_isbn
-      assert_raise Library::ISBNEmptyError do
+      assert_raise ISBNEmptyError do
         isbn = ""
         author = "Micheal Scoffield"
         title = "Breaking Free"
         publication_year = "2000"
-        Library::Book.new isbn, title, author, publication_year
+        Book.new isbn, title, author, publication_year
       end
     end
   end
