@@ -14,4 +14,16 @@ module LibraryTaka
       super("Book already added: book with isbn: #{isbn}")
     end
   end
+
+  class BookNotFoundError < StandardError
+    def initialize(isbn)
+      super("Book not found: book with isbn: #{isbn}")
+    end
+  end
+
+  class BookUnavailableError < StandardError
+    def initialize(isbn)
+      super("Book is currently not available: book with isbn: #{isbn}")
+    end
+  end
 end
