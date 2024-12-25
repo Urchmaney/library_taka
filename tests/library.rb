@@ -43,6 +43,12 @@ module LibraryTaka
           @library.borrow_book SAMPLE_BOOKS[1]
         end
       end
+
+      def test_error_borrow_unadded_book
+        assert_raise BookNotFoundError do
+          @library.borrow_book Book.new("978-92-95111-00-2", "Elon Musk", "Building X", "2024")
+        end
+      end
     end
   end
 end
